@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:word/Model/model.dart';
 import 'package:word/utils/Globals.dart';
 
 class Home_ extends StatefulWidget {
@@ -39,35 +40,49 @@ class _Home_State extends State<Home_> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       ...Global.Data.map(
-                        (e) => GestureDetector(
-                          onTap: () {
-                            Navigator.pushNamed(context, 'two', arguments: e);
-                          },
-                          child: Container(
-                            height: 190,
-                            width: 325,
-                            margin: EdgeInsets.symmetric(vertical: 20),
-                            alignment: Alignment(0, 0),
-                            decoration: BoxDecoration(
-                              color: Colors.black,
-                              borderRadius: BorderRadius.circular(20),
-                              // image: DecorationImage(
-                              //   fit: BoxFit.cover,
-                              //   image: NetworkImage(
-                              //       "https://a.cdn-hotels.com/gdcs/production198/d134/685083f0-b96d-4a89-a694-f9fbaa9f44fa.jpg?impolicy=fcrop&w=800&h=533&q=medium"),
-                              // ),
-                            ),
-                            child: Text(
-                              "${e['title']}",
-                              style: TextStyle(
-                                fontWeight: FontWeight.w600,
-                                color: Colors.white.withOpacity(0.6),
-                                fontSize: 40,
+                        (e) {
+                          return Column(
+                            children: [
+                              Container(
+                                height:
+                                    MediaQuery.of(context).size.height / 3.6,
+                                width: MediaQuery.of(context).size.width / 1.1,
+                                //     margin: EdgeInsets.symmetric(vertical: 20),
+                                alignment: Alignment.topCenter,
+                                decoration: const BoxDecoration(
+                                  color: Colors.transparent,
+                                ),
+                                child: Column(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
+                                  children: [
+                                    Text(
+                                      "${e['title']}",
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.w600,
+                                        color: Colors.white.withOpacity(0.4),
+                                        fontSize: 40,
+                                      ),
+                                    ),
+                                    Container(
+                                      height:
+                                          MediaQuery.of(context).size.height /
+                                              5.6,
+                                      width: MediaQuery.of(context).size.width /
+                                          1.1,
+                                      decoration: BoxDecoration(
+                                        color: Colors.black,
+                                        borderRadius: BorderRadius.circular(40),
+                                      ),
+                                      child: Text("j"),
+                                    ),
+                                  ],
+                                ),
                               ),
-                            ),
-                          ),
-                        ),
-                      ),
+                            ],
+                          );
+                        },
+                      ).toList(),
                     ],
                   ),
                 ),

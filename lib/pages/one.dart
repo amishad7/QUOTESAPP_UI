@@ -13,7 +13,7 @@ class _Home_State extends State<Home_> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.indigo.shade700,
+      backgroundColor: Colors.white,
       body: SafeArea(
         child: Column(
           children: [
@@ -23,7 +23,7 @@ class _Home_State extends State<Home_> {
                 child: const Text(
                   "Home",
                   style: TextStyle(
-                    color: Colors.white,
+                    color: Colors.black,
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
                   ),
@@ -43,40 +43,58 @@ class _Home_State extends State<Home_> {
                         (e) {
                           return Column(
                             children: [
-                              Container(
-                                height:
-                                    MediaQuery.of(context).size.height / 3.6,
-                                width: MediaQuery.of(context).size.width / 1.1,
-                                //     margin: EdgeInsets.symmetric(vertical: 20),
-                                alignment: Alignment.topCenter,
-                                decoration: const BoxDecoration(
-                                  color: Colors.transparent,
-                                ),
-                                child: Column(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceEvenly,
-                                  children: [
-                                    Text(
-                                      "${e['title']}",
-                                      style: TextStyle(
-                                        fontWeight: FontWeight.w600,
-                                        color: Colors.white.withOpacity(0.4),
-                                        fontSize: 40,
+                              GestureDetector(
+                                onTap: () {
+                                  Navigator.pushNamed(context, "two",
+                                      arguments: e);
+                                },
+                                child: Container(
+                                  height:
+                                      MediaQuery.of(context).size.height / 3.6,
+                                  width:
+                                      MediaQuery.of(context).size.width / 1.1,
+                                  //     margin: EdgeInsets.symmetric(vertical: 20),
+                                  alignment: Alignment.topCenter,
+                                  decoration: const BoxDecoration(
+                                    color: Colors.transparent,
+                                  ),
+                                  child: Container(
+                                    margin: const EdgeInsets.only(bottom: 20),
+                                    alignment: Alignment.topLeft,
+                                    height: MediaQuery.of(context).size.height /
+                                        3.6,
+                                    width:
+                                        MediaQuery.of(context).size.width / 1.1,
+                                    decoration: BoxDecoration(
+                                      color: Colors.black,
+                                      image: const DecorationImage(
+                                        fit: BoxFit.cover,
+                                        image: NetworkImage(
+                                            "https://st.depositphotos.com/1030575/1200/i/450/depositphotos_12004953-stock-photo-natural-green-background-with-green.jpg"),
+                                      ),
+                                      borderRadius: BorderRadius.circular(40),
+                                    ),
+                                    child: Container(
+                                      width: double.infinity,
+                                      padding: const EdgeInsets.only(
+                                          left: 20, top: 50),
+                                      decoration: const BoxDecoration(
+                                        color: Colors.transparent,
+                                        borderRadius: BorderRadius.only(
+                                          topRight: Radius.circular(40),
+                                          topLeft: Radius.circular(40),
+                                        ),
+                                      ),
+                                      child: Text(
+                                        "${e['title']}",
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.w600,
+                                          color: Colors.black.withOpacity(0.5),
+                                          fontSize: 20,
+                                        ),
                                       ),
                                     ),
-                                    Container(
-                                      height:
-                                          MediaQuery.of(context).size.height /
-                                              5.6,
-                                      width: MediaQuery.of(context).size.width /
-                                          1.1,
-                                      decoration: BoxDecoration(
-                                        color: Colors.black,
-                                        borderRadius: BorderRadius.circular(40),
-                                      ),
-                                      child: Text("j"),
-                                    ),
-                                  ],
+                                  ),
                                 ),
                               ),
                             ],

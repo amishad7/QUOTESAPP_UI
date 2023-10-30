@@ -20,6 +20,75 @@ class Global {
       'author': 'Hidden',
     },
     {
+      'title': 'Summer Carnival',
+      'id': 2,
+      'quote': "Celebrate the sun, the fun, and the joy of summer!",
+      'author': 'Sunny Events'
+}
+
+{
+      'title': 'Harvest Festival',
+      'id': 3,
+      'quote': "May your harvest be bountiful and your heart be full.",
+      'author': 'Farming Community'
+}
+
+{
+      'title': 'Diwali Celebration',
+      'id': 4,
+      'quote': "May the festival of lights bring joy and prosperity to your life.",
+      'author': 'Diwali Committee'
+}
+
+{
+        'title': 'Winter Wonderland',
+        'id': 5,
+        'quote': "Embrace the magic of winter and the warmth of friendship.",
+        'author': 'Snowflake Events'
+}
+
+{
+              'title': 'Cultural Fiesta',
+              'id': 6,
+              'quote': "Explore the diversity of our world through culture and art.",
+              'author': 'Global Unity Society'
+}
+
+{
+                'title': 'Mardi Gras Madness',
+                'id': 7,
+                'quote': "Let the good times roll and the music fill your soul!",
+                'author': 'Carnival Krewe'
+}
+
+{
+                'title': 'Spring Fling',
+                'id': 8,
+                'quote': "Blossom with the season and dance in the colors of spring.",
+                'author': 'Nature Enthusiasts'
+}
+
+{
+                  'title': 'New Years Eve Bash',
+                  'id': 9,
+                  'quote': "Cheers to a new year filled with hope, love, and endless possibilities!",
+                  'author': 'Countdown Club'
+}
+
+{
+                  'title': 'Music Festival',
+                  'id': 10,
+                  'quote': "Feel the rhythm, hear the melody, and let the music set you free.",
+                  'author': 'SoundWave Productions'
+}
+
+{
+                  'title': 'Carnival of Dreams',
+                  'id': 11,
+                  'quote': "Step into a world of wonder and make your dreams come true!",
+                  'author': 'Dreamland Amusements'
+}
+    {
       'title': 'Inspirational',
       'id': 2,
       'quote':

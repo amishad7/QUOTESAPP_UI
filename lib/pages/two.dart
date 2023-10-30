@@ -1,4 +1,7 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:word/utils/Globals.dart';
 
@@ -10,6 +13,14 @@ class info_Page extends StatefulWidget {
 }
 
 class _info_PageState extends State<info_Page> {
+  copyText({required String Textdata}) {
+    Clipboard.setData(
+      ClipboardData(
+        text: Textdata,
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     Map data = ModalRoute.of(context)!.settings.arguments as Map;
@@ -17,9 +28,17 @@ class _info_PageState extends State<info_Page> {
     return Scaffold(
       appBar: AppBar(
         actions: [
-          IconButton(
-            onPressed: () {},
-            icon: Icon(Icons.more_vert_outlined),
+          PopupMenuButton(
+            itemBuilder: (context) => [
+              PopupMenuItem(
+                child: GestureDetector(
+                    onTap: () {
+                      copyText(Textdata: data['quote']);
+                      log("done");
+                    },
+                    child: Text("Copy")),
+              ),
+            ],
           ),
         ],
       ),
@@ -29,8 +48,8 @@ class _info_PageState extends State<info_Page> {
           children: [
             Container(
               alignment: Alignment.center,
-              padding: EdgeInsets.all(23),
-              margin: EdgeInsets.only(left: 20),
+              padding: const EdgeInsets.all(23),
+              margin: const EdgeInsets.only(left: 20),
               height: MediaQuery.of(context).size.height / 2.6,
               width: MediaQuery.of(context).size.width / 1.1,
               decoration: BoxDecoration(
@@ -60,7 +79,7 @@ class _info_PageState extends State<info_Page> {
               ),
             ),
             Container(
-              margin: EdgeInsets.symmetric(vertical: 15, horizontal: 15),
+              margin: const EdgeInsets.symmetric(vertical: 15, horizontal: 15),
               child: Text(
                 "Background Colors",
                 style: GoogleFonts.inter().copyWith(
@@ -86,7 +105,7 @@ class _info_PageState extends State<info_Page> {
                           });
                         },
                         child: Container(
-                          margin: EdgeInsets.symmetric(horizontal: 10),
+                          margin: const EdgeInsets.symmetric(horizontal: 10),
                           height: MediaQuery.of(context).size.height / 7.6,
                           width: MediaQuery.of(context).size.width / 4.1,
                           decoration: BoxDecoration(
@@ -95,7 +114,7 @@ class _info_PageState extends State<info_Page> {
                             boxShadow: [
                               BoxShadow(
                                   color: Colors.black.withOpacity(0.25),
-                                  offset: Offset(4, 5),
+                                  offset: const Offset(4, 5),
                                   blurRadius: 2),
                             ],
                           ),
@@ -107,7 +126,7 @@ class _info_PageState extends State<info_Page> {
               ),
             ),
             Container(
-              margin: EdgeInsets.symmetric(vertical: 15, horizontal: 15),
+              margin: const EdgeInsets.symmetric(vertical: 15, horizontal: 15),
               child: Text(
                 "Font Colors",
                 style: GoogleFonts.inter().copyWith(
@@ -132,7 +151,7 @@ class _info_PageState extends State<info_Page> {
                           });
                         },
                         child: Container(
-                          margin: EdgeInsets.symmetric(horizontal: 10),
+                          margin: const EdgeInsets.symmetric(horizontal: 10),
                           height: MediaQuery.of(context).size.height / 7.6,
                           width: MediaQuery.of(context).size.width / 4.1,
                           decoration: BoxDecoration(
@@ -141,7 +160,7 @@ class _info_PageState extends State<info_Page> {
                             boxShadow: [
                               BoxShadow(
                                   color: Colors.black.withOpacity(0.25),
-                                  offset: Offset(4, 5),
+                                  offset: const Offset(4, 5),
                                   blurRadius: 2),
                             ],
                           ),
@@ -153,7 +172,7 @@ class _info_PageState extends State<info_Page> {
               ),
             ),
             Container(
-              margin: EdgeInsets.symmetric(vertical: 15, horizontal: 15),
+              margin: const EdgeInsets.symmetric(vertical: 15, horizontal: 15),
               child: Text(
                 "Background Image",
                 style: GoogleFonts.inter().copyWith(
@@ -178,7 +197,7 @@ class _info_PageState extends State<info_Page> {
                           });
                         },
                         child: Container(
-                          margin: EdgeInsets.symmetric(horizontal: 10),
+                          margin: const EdgeInsets.symmetric(horizontal: 10),
                           height: MediaQuery.of(context).size.height / 7.6,
                           width: MediaQuery.of(context).size.width / 4.1,
                           decoration: BoxDecoration(
@@ -188,7 +207,7 @@ class _info_PageState extends State<info_Page> {
                             boxShadow: [
                               BoxShadow(
                                   color: Colors.black.withOpacity(0.25),
-                                  offset: Offset(4, 5),
+                                  offset: const Offset(4, 5),
                                   blurRadius: 2),
                             ],
                           ),

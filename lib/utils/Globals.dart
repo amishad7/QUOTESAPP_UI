@@ -10,7 +10,7 @@ class Global {
   static Color imgbackground = Colors.black;
   static Color fontcolor = Colors.white;
   static String defaultimg =
-      'https://t4.ftcdn.net/jpg/02/68/80/71/360_F_268807166_oPVMMlJcxy4OjBDkl9JPxqfJeMC98yNm.jpg';
+      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRtkTQUXhE90L5atUPtdU_xQVSCu4fYG3A32SeGjB7TYOjsorF7BgAVIESMPTXxD9siz9s&usqp=CAU';
   static List Data = [
     {
       'title': 'Festival',

@@ -1,8 +1,13 @@
 import 'dart:developer';
+import 'dart:io';
+import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:share_plus/share_plus.dart';
 import 'package:word/utils/Globals.dart';
 
 class info_Page extends StatefulWidget {
@@ -13,6 +18,51 @@ class info_Page extends StatefulWidget {
 }
 
 class _info_PageState extends State<info_Page> {
+  GlobalKey repaintBoudrykey = GlobalKey();
+
+  ShareImage() async {
+    var repaintObjet = await repaintBoudrykey.currentContext!.findRenderObject()
+        as RenderRepaintBoundary;
+    log("--------------------------------------------------------------------");
+    log("$repaintObjet");
+    log("--------------------------------------------------------------------");
+
+    var imgData = await repaintObjet.toImage(pixelRatio: 3);
+    log("--------------------------------------------------------------------");
+    log("$imgData");
+    log("--------------------------------------------------------------------");
+
+    var imgBytedata = await imgData.toByteData(format: ImageByteFormat.png);
+
+    log("--------------------------------------------------------------------");
+    log("$imgBytedata");
+    log("--------------------------------------------------------------------");
+
+    Uint8List myimgU8intList = await imgBytedata!.buffer.asUint8List();
+
+    log("--------------------------------------------------------------------");
+    log("$myimgU8intList");
+    log("--------------------------------------------------------------------");
+
+    Directory? directory = await getDownloadsDirectory();
+
+    log("--------------------------------------------------------------------");
+    log("$directory");
+    log("--------------------------------------------------------------------");
+
+    File file = await File('${directory!.path}.png');
+
+    log("--------------------------------------------------------------------");
+    log("$file");
+    log("--------------------------------------------------------------------");
+
+    Share.shareXFiles([XFile(file.path)]);
+
+    log("--------------------------------------------------------------------");
+    log("$repaintObjet");
+    log("--------------------------------------------------------------------");
+  }
+
   copyText({required String Textdata}) {
     Clipboard.setData(
       ClipboardData(
@@ -27,16 +77,30 @@ class _info_PageState extends State<info_Page> {
     int i = 0;
     return Scaffold(
       appBar: AppBar(
+        leading: IconButton(
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+          icon: const Icon(
+            Icons.arrow_back_ios,
+          ),
+        ),
         actions: [
           PopupMenuButton(
             itemBuilder: (context) => [
               PopupMenuItem(
-                child: GestureDetector(
-                    onTap: () {
-                      copyText(Textdata: data['quote']);
-                      log("done");
-                    },
-                    child: Text("Copy")),
+                onTap: () {
+                  copyText(Textdata: data['quote']);
+                  log("done");
+                },
+                child: const Text("Copy"),
+              ),
+              PopupMenuItem(
+                onTap: () {
+                  ShareImage();
+                  log("image share done");
+                },
+                child: const Text("Share"),
               ),
             ],
           ),

@@ -14,6 +14,7 @@ class _Home_State extends State<Home_> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
+      drawer: const Drawer(),
       body: SafeArea(
         child: Column(
           children: [

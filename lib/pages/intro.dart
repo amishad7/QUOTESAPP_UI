@@ -20,7 +20,7 @@ class _SplashScreenState extends State<SplashScreen> {
       backgroundColor: Colors.white,
       body: Center(
         child: Container(
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             image: DecorationImage(
               image: NetworkImage(
                   'https://i.pinimg.com/originals/7d/de/4a/7dde4abc28d869acae0d349319fdd7a9.gif'),

@@ -21,7 +21,7 @@ class _info_PageState extends State<info_Page> {
   GlobalKey repaintBoudrykey = GlobalKey();
 
   ShareImage() async {
-    var repaintObjet = await repaintBoudrykey.currentContext!.findRenderObject()
+    var repaintObjet = repaintBoudrykey.currentContext!.findRenderObject()
         as RenderRepaintBoundary;
     log("--------------------------------------------------------------------");
     log("$repaintObjet");
@@ -38,7 +38,7 @@ class _info_PageState extends State<info_Page> {
     log("$imgBytedata");
     log("--------------------------------------------------------------------");
 
-    Uint8List myimgU8intList = await imgBytedata!.buffer.asUint8List();
+    Uint8List myimgU8intList = imgBytedata!.buffer.asUint8List();
 
     log("--------------------------------------------------------------------");
     log("$myimgU8intList");
@@ -50,7 +50,7 @@ class _info_PageState extends State<info_Page> {
     log("$directory");
     log("--------------------------------------------------------------------");
 
-    File file = await File('${directory!.path}.png');
+    File file = File('${directory!.path}.png');
 
     log("--------------------------------------------------------------------");
     log("$file");
@@ -75,11 +75,13 @@ class _info_PageState extends State<info_Page> {
   Widget build(BuildContext context) {
     Map<String, dynamic> data =
         ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>;
-    int i = 0;
+
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
           onPressed: () {
+            Global.imgbackground = Colors.black;
+            Global.fontcolor = Colors.white;
             Navigator.of(context).pop();
           },
           icon: const Icon(
@@ -159,8 +161,8 @@ class _info_PageState extends State<info_Page> {
                 ),
               ),
             ),
-            Container(
-              height: MediaQuery.of(context).size.height / 6.9,
+            SizedBox(
+              height: MediaQuery.of(context).size.height / 7.9,
               child: SingleChildScrollView(
                 physics: const BouncingScrollPhysics(),
                 scrollDirection: Axis.horizontal,
@@ -209,7 +211,7 @@ class _info_PageState extends State<info_Page> {
                 ),
               ),
             ),
-            Container(
+            SizedBox(
               height: MediaQuery.of(context).size.height / 6.9,
               child: SingleChildScrollView(
                 physics: const BouncingScrollPhysics(),
@@ -244,54 +246,58 @@ class _info_PageState extends State<info_Page> {
                 ),
               ),
             ),
-            Container(
-              margin: const EdgeInsets.symmetric(vertical: 15, horizontal: 15),
-              child: Text(
-                "Background Image",
-                style: GoogleFonts.inter().copyWith(
-                  fontSize: 30,
-                  letterSpacing: -2,
-                  color: Colors.black.withOpacity(0.7),
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-            Container(
-              height: MediaQuery.of(context).size.height / 6.9,
-              child: SingleChildScrollView(
-                physics: const BouncingScrollPhysics(),
-                scrollDirection: Axis.horizontal,
-                child: Row(
-                  children: [
-                    ...Global.img.map((e) {
-                      return GestureDetector(
-                        onTap: () {
-                          setState(() {
-                            Global.defaultimg = e;
-                          });
-                        },
-                        child: Container(
-                          margin: const EdgeInsets.symmetric(horizontal: 10),
-                          height: MediaQuery.of(context).size.height / 7.6,
-                          width: MediaQuery.of(context).size.width / 4.1,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(24),
-                            image: DecorationImage(
-                                image: NetworkImage(e), fit: BoxFit.cover),
-                            boxShadow: [
-                              BoxShadow(
-                                  color: Colors.black.withOpacity(0.25),
-                                  offset: const Offset(4, 5),
-                                  blurRadius: 2),
-                            ],
-                          ),
-                        ),
-                      );
-                    }),
-                  ],
-                ),
-              ),
-            ),
+            // Container(
+            //   margin: const EdgeInsets.symmetric(vertical: 15, horizontal: 15),
+            //   child: Text(
+            //     "Background Image",
+            //     style: GoogleFonts.inter().copyWith(
+            //       fontSize: 30,
+            //       letterSpacing: -2,
+            //       color: Colors.black.withOpacity(0.7),
+            //       fontWeight: FontWeight.bold,
+            //     ),
+            //   ),
+            // ),
+            // SizedBox(
+            //   height: MediaQuery.of(context).size.height / 6.9,
+            //   child: SingleChildScrollView(
+            //     physics: const BouncingScrollPhysics(),
+            //     scrollDirection: Axis.horizontal,
+            //     child: Row(
+            //       children: [
+            //         ...Global.img.map((e) {
+            //           return GestureDetector(
+            //             onTap: () {
+            //               setState(() {
+            //                 Global.defaultimg = e;
+            //               });
+            //             },
+            //             child: Container(
+            //               margin: const EdgeInsets.symmetric(horizontal: 10),
+            //               height: MediaQuery.of(context).size.height / 7.6,
+            //               width: MediaQuery.of(context).size.width / 4.1,
+            //               decoration: BoxDecoration(
+            //                 borderRadius: BorderRadius.circular(24),
+            //                 image: DecorationImage(
+            //                     image: AssetImage(
+            //                       e,
+            //                     ),
+            //                     fit: BoxFit.cover),
+            //                 boxShadow: [
+            //                   BoxShadow(
+            //                     color: Colors.black.withOpacity(0.25),
+            //                     offset: const Offset(4, 5),
+            //                     blurRadius: 2,
+            //                   ),
+            //                 ],
+            //               ),
+            //             ),
+            //           );
+            //         }),
+            //       ],
+            //     ),
+            //   ),
+            // ),
           ],
         ),
       ),

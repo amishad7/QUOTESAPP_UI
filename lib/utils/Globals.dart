@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 
 class Global {
   static List img = [
-    "https://img.rawpixel.com/s3fs-private/rawpixel_images/website_content/v1016-c-08_1-ksh6mza3.jpg?w=800&dpr=1&fit=default&crop=default&q=65&vib=3&con=3&usm=15&bg=F4F4F3&ixlib=js-2.2.1&s=f584d8501c27c5f649bc2cfce50705c0",
-    "https://images.unsplash.com/photo-1631631480669-535cc43f2327?auto=format&fit=crop&q=80&w=1000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YmFja2dyb3VuZCUyMGltYWdlfGVufDB8fDB8fHww",
-    "https://img.freepik.com/premium-photo/purple-pink-abstract-bokeh-lights-background_559617-240.jpg",
+    "first.jpg",
   ];
 
   static Color imgbackground = Colors.black;
@@ -16,21 +14,24 @@ class Global {
       "Category": "Festival",
       "data": [
         {
-          'title': 'Festival',
+          'title': 'Diwali',
           'id': 1,
+          'favourite': false,
           'quote':
               "Wishing you a festival filled with laughter, good food, and great memories",
           'author': 'Hidden',
         },
         {
-          'title': 'Festival',
+          'title': 'Makarskranti',
+          'favourite': false,
           'id': 2,
           'quote':
               "Here's to a celebration that overflows with happiness, culinary delights, and lasting recollections.",
           'author': 'Hidden',
         },
         {
-          'title': 'Festival',
+          'title': 'new year eve',
+          'favourite': false,
           'id': 3,
           'quote':
               "Sending you heartfelt wishes for a festival brimming with laughter, scrumptious treats, and unforgettable experiences.",
@@ -39,50 +40,27 @@ class Global {
       ],
     },
     {
-      "Category": "Festival",
+      "Category": "English ",
       "data": [
         {
-          'title': 'Festival',
+          'title': 'Halloween',
+          'favourite': false,
           'id': 1,
           'quote':
               "Wishing you a festival filled with laughter, good food, and great memories",
           'author': 'Hidden',
         },
         {
-          'title': 'Festival',
+          'title': 'New year Eve',
+          'favourite': false,
           'id': 2,
           'quote':
               "Here's to a celebration that overflows with happiness, culinary delights, and lasting recollections.",
           'author': 'Hidden',
         },
         {
-          'title': 'Festival',
-          'id': 3,
-          'quote':
-              "Sending you heartfelt wishes for a festival brimming with laughter, scrumptious treats, and unforgettable experiences.",
-          'author': 'Hidden',
-        },
-      ],
-    },
-    {
-      "Category": "Festival",
-      "data": [
-        {
-          'title': 'Festival',
-          'id': 1,
-          'quote':
-              "Wishing you a festival filled with laughter, good food, and great memories",
-          'author': 'Hidden',
-        },
-        {
-          'title': 'Festival',
-          'id': 2,
-          'quote':
-              "Here's to a celebration that overflows with happiness, culinary delights, and lasting recollections.",
-          'author': 'Hidden',
-        },
-        {
-          'title': 'Festival',
+          'title': 'Summer camp',
+          'favourite': false,
           'id': 3,
           'quote':
               "Sending you heartfelt wishes for a festival brimming with laughter, scrumptious treats, and unforgettable experiences.",
@@ -91,4 +69,6 @@ class Global {
       ],
     },
   ];
+
+  static List favouriteItems = [];
 }

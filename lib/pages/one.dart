@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:word/Model/model.dart';
 import 'package:word/utils/Globals.dart';
 
 class Home_ extends StatefulWidget {
@@ -20,8 +19,76 @@ class _Home_State extends State<Home_> {
           "Home",
         ),
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.pushNamed(context, 'three');
+        },
+        child: Icon(Icons.add),
+      ),
       backgroundColor: Colors.white,
-      drawer: const Drawer(),
+      drawer: Drawer(
+        child: Column(
+          children: [
+            SizedBox(height: 45),
+            Row(
+              children: [
+                SizedBox(width: 20),
+                CircleAvatar(
+                  radius: 50,
+                ),
+                SizedBox(width: 10),
+                Text(
+                  "Profile",
+                  style: GoogleFonts.poppins().copyWith(fontSize: 24),
+                ),
+              ],
+            ),
+            SizedBox(height: 27),
+            Container(
+              child: Row(
+                children: [
+                  SizedBox(width: 19),
+                  Icon(Icons.favorite_border_rounded,
+                      color: Colors.redAccent.shade100, size: 28),
+                  SizedBox(width: 16),
+                  Text(
+                    "Favourite",
+                    style: GoogleFonts.poppins().copyWith(fontSize: 24),
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(height: 19),
+            Container(
+              child: Row(
+                children: [
+                  SizedBox(width: 19),
+                  Icon(Icons.settings, color: Colors.black, size: 30),
+                  SizedBox(width: 16),
+                  Text(
+                    "Settings",
+                    style: GoogleFonts.poppins().copyWith(fontSize: 24),
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(height: 19),
+            Container(
+              child: Row(
+                children: [
+                  SizedBox(width: 19),
+                  Icon(Icons.settings, color: Colors.black, size: 30),
+                  SizedBox(width: 16),
+                  Text(
+                    "About",
+                    style: GoogleFonts.poppins().copyWith(fontSize: 24),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
       body: Container(
         padding: const EdgeInsets.only(left: 10),
         child: SingleChildScrollView(
@@ -58,32 +125,56 @@ class _Home_State extends State<Home_> {
                                     arguments: e,
                                   );
                                 },
-                                child: Container(
-                                  height:
-                                      MediaQuery.of(context).size.height / 3.6,
-                                  width:
-                                      MediaQuery.of(context).size.width / 1.1,
-                                  margin: const EdgeInsets.symmetric(
-                                      horizontal: 10),
-                                  alignment: Alignment.topCenter,
-                                  decoration: const BoxDecoration(
-                                    color: Colors.transparent,
-                                  ),
+                                child: Card(
                                   child: Container(
-                                    margin: const EdgeInsets.only(bottom: 20),
-                                    alignment: Alignment.topLeft,
+                                    alignment: Alignment.center,
+                                    padding: const EdgeInsets.symmetric(
+                                      horizontal: 20,
+                                    ),
                                     height: MediaQuery.of(context).size.height /
-                                        3.6,
+                                        3.9,
                                     width:
                                         MediaQuery.of(context).size.width / 1.1,
-                                    decoration: BoxDecoration(
-                                      color: Colors.black,
-                                      image: const DecorationImage(
-                                        fit: BoxFit.cover,
-                                        image: NetworkImage(
-                                            "https://st.depositphotos.com/1030575/1200/i/450/depositphotos_12004953-stock-photo-natural-green-background-with-green.jpg"),
-                                      ),
-                                      borderRadius: BorderRadius.circular(40),
+                                    child: Stack(
+                                      children: [
+                                        Align(
+                                          alignment: Alignment(1.1, -1),
+                                          child: IconButton(
+                                            onPressed: () {
+                                              setState(
+                                                () {
+                                                  e['favourite'] =
+                                                      !e['favourite'];
+                                                  if (e['favourite'] == true) {
+                                                    Global.favouriteItems
+                                                        .add(e);
+                                                    if (e['favourite'] !=
+                                                        true) {
+                                                      Global.favouriteItems
+                                                          .remove(e);
+                                                    }
+                                                  }
+                                                },
+                                              );
+                                            },
+                                            icon: (e['favourite'] != true)
+                                                ? Icon(
+                                                    Icons.star_border,
+                                                  )
+                                                : Icon(
+                                                    Icons.star,
+                                                  ),
+                                          ),
+                                        ),
+                                        Align(
+                                          alignment: Alignment.center,
+                                          child: Text(
+                                            "${e['quote']}",
+                                            style: GoogleFonts.poppins()
+                                                .copyWith(fontSize: 18),
+                                          ),
+                                        ),
+                                      ],
                                     ),
                                   ),
                                 ),

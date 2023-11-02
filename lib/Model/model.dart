@@ -11,7 +11,7 @@ class Objects {
     required this.id,
   });
 
-  factory Objects.fromMapData(Map data) {
+  factory Objects.fromMapData({required Map data}) {
     return Objects(
         author: data['author'],
         title: data['title'],

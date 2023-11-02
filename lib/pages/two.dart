@@ -73,7 +73,8 @@ class _info_PageState extends State<info_Page> {
 
   @override
   Widget build(BuildContext context) {
-    Map data = ModalRoute.of(context)!.settings.arguments as Map;
+    Map<String, dynamic> data =
+        ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>;
     int i = 0;
     return Scaffold(
       appBar: AppBar(
@@ -107,43 +108,47 @@ class _info_PageState extends State<info_Page> {
         ],
       ),
       body: SingleChildScrollView(
+        physics: const BouncingScrollPhysics(),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Container(
-              alignment: Alignment.center,
-              padding: const EdgeInsets.all(23),
-              margin: const EdgeInsets.only(left: 20),
-              height: MediaQuery.of(context).size.height / 2.6,
-              width: MediaQuery.of(context).size.width / 1.1,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(34),
-                color: Global.imgbackground,
-                image: DecorationImage(
-                  fit: BoxFit.cover,
-                  image: NetworkImage(
-                    Global.defaultimg,
+            RepaintBoundary(
+              key: repaintBoudrykey,
+              child: Container(
+                alignment: Alignment.center,
+                padding: const EdgeInsets.all(23),
+                margin: const EdgeInsets.only(left: 20),
+                height: MediaQuery.of(context).size.height / 2.6,
+                width: MediaQuery.of(context).size.width / 1.1,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(14),
+                  color: Global.imgbackground,
+                  image: DecorationImage(
+                    fit: BoxFit.cover,
+                    image: NetworkImage(
+                      Global.defaultimg,
+                    ),
                   ),
                 ),
-              ),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  SelectableText(
-                    "${data['quote']}",
-                    style: GoogleFonts.poppins()
-                        .copyWith(fontSize: 24, color: Global.fontcolor),
-                  ),
-                  SelectableText(
-                    "- ${data['author']}",
-                    style: GoogleFonts.poppins()
-                        .copyWith(fontSize: 24, color: Global.fontcolor),
-                  ),
-                ],
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    SelectableText(
+                      "${data['quote']}",
+                      style: GoogleFonts.poppins()
+                          .copyWith(fontSize: 24, color: Global.fontcolor),
+                    ),
+                    SelectableText(
+                      "- ${data['author']}",
+                      style: GoogleFonts.poppins()
+                          .copyWith(fontSize: 24, color: Global.fontcolor),
+                    ),
+                  ],
+                ),
               ),
             ),
             Container(
-              margin: const EdgeInsets.symmetric(vertical: 15, horizontal: 15),
+              margin: const EdgeInsets.only(top: 15, left: 18),
               child: Text(
                 "Background Colors",
                 style: GoogleFonts.inter().copyWith(
@@ -157,6 +162,7 @@ class _info_PageState extends State<info_Page> {
             Container(
               height: MediaQuery.of(context).size.height / 6.9,
               child: SingleChildScrollView(
+                physics: const BouncingScrollPhysics(),
                 scrollDirection: Axis.horizontal,
                 child: Row(
                   children: [
@@ -169,17 +175,19 @@ class _info_PageState extends State<info_Page> {
                           });
                         },
                         child: Container(
-                          margin: const EdgeInsets.symmetric(horizontal: 10),
-                          height: MediaQuery.of(context).size.height / 7.6,
-                          width: MediaQuery.of(context).size.width / 4.1,
+                          margin: const EdgeInsets.only(left: 12, right: 10),
+                          height: MediaQuery.of(context).size.height / 10.3,
+                          width: MediaQuery.of(context).size.width / 5.9,
                           decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(24),
+                            // borderRadius: BorderRadius.circular(14),
                             color: e,
+                            shape: BoxShape.circle,
                             boxShadow: [
                               BoxShadow(
-                                  color: Colors.black.withOpacity(0.25),
-                                  offset: const Offset(4, 5),
-                                  blurRadius: 2),
+                                color: Colors.black.withOpacity(0.25),
+                                offset: const Offset(4, 5),
+                                blurRadius: 2,
+                              ),
                             ],
                           ),
                         ),
@@ -204,6 +212,7 @@ class _info_PageState extends State<info_Page> {
             Container(
               height: MediaQuery.of(context).size.height / 6.9,
               child: SingleChildScrollView(
+                physics: const BouncingScrollPhysics(),
                 scrollDirection: Axis.horizontal,
                 child: Row(
                   children: [
@@ -250,6 +259,7 @@ class _info_PageState extends State<info_Page> {
             Container(
               height: MediaQuery.of(context).size.height / 6.9,
               child: SingleChildScrollView(
+                physics: const BouncingScrollPhysics(),
                 scrollDirection: Axis.horizontal,
                 child: Row(
                   children: [

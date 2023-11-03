@@ -23,44 +23,18 @@ class _info_PageState extends State<info_Page> {
   ShareImage() async {
     var repaintObjet = repaintBoudrykey.currentContext!.findRenderObject()
         as RenderRepaintBoundary;
-    log("--------------------------------------------------------------------");
-    log("$repaintObjet");
-    log("--------------------------------------------------------------------");
 
     var imgData = await repaintObjet.toImage(pixelRatio: 3);
-    log("--------------------------------------------------------------------");
-    log("$imgData");
-    log("--------------------------------------------------------------------");
 
     var imgBytedata = await imgData.toByteData(format: ImageByteFormat.png);
 
-    log("--------------------------------------------------------------------");
-    log("$imgBytedata");
-    log("--------------------------------------------------------------------");
-
     Uint8List myimgU8intList = imgBytedata!.buffer.asUint8List();
-
-    log("--------------------------------------------------------------------");
-    log("$myimgU8intList");
-    log("--------------------------------------------------------------------");
 
     Directory? directory = await getDownloadsDirectory();
 
-    log("--------------------------------------------------------------------");
-    log("$directory");
-    log("--------------------------------------------------------------------");
-
     File file = File('${directory!.path}.png');
 
-    log("--------------------------------------------------------------------");
-    log("$file");
-    log("--------------------------------------------------------------------");
-
     Share.shareXFiles([XFile(file.path)]);
-
-    log("--------------------------------------------------------------------");
-    log("$repaintObjet");
-    log("--------------------------------------------------------------------");
   }
 
   copyText({required String Textdata}) {

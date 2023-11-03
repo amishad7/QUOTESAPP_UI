@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:word/utils/Globals.dart';
@@ -12,83 +14,26 @@ class Home_ extends StatefulWidget {
 class _Home_State extends State<Home_> {
   @override
   Widget build(BuildContext context) {
+    String TabIndex = "Latest";
+
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: const Text(
-          "Home",
-        ),
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon: Icon(Icons.person_outline_rounded),
+          ),
+        ],
       ),
       floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.green.shade50,
         onPressed: () {
           Navigator.pushNamed(context, 'three');
         },
         child: Icon(Icons.add),
       ),
       backgroundColor: Colors.white,
-      drawer: Drawer(
-        child: Column(
-          children: [
-            SizedBox(height: 45),
-            Row(
-              children: [
-                SizedBox(width: 20),
-                CircleAvatar(
-                  radius: 50,
-                ),
-                SizedBox(width: 10),
-                Text(
-                  "Profile",
-                  style: GoogleFonts.poppins().copyWith(fontSize: 24),
-                ),
-              ],
-            ),
-            SizedBox(height: 27),
-            Container(
-              child: Row(
-                children: [
-                  SizedBox(width: 19),
-                  Icon(Icons.favorite_border_rounded,
-                      color: Colors.redAccent.shade100, size: 28),
-                  SizedBox(width: 16),
-                  Text(
-                    "Favourite",
-                    style: GoogleFonts.poppins().copyWith(fontSize: 24),
-                  ),
-                ],
-              ),
-            ),
-            SizedBox(height: 19),
-            Container(
-              child: Row(
-                children: [
-                  SizedBox(width: 19),
-                  Icon(Icons.settings, color: Colors.black, size: 30),
-                  SizedBox(width: 16),
-                  Text(
-                    "Settings",
-                    style: GoogleFonts.poppins().copyWith(fontSize: 24),
-                  ),
-                ],
-              ),
-            ),
-            SizedBox(height: 19),
-            Container(
-              child: Row(
-                children: [
-                  SizedBox(width: 19),
-                  Icon(Icons.settings, color: Colors.black, size: 30),
-                  SizedBox(width: 16),
-                  Text(
-                    "About",
-                    style: GoogleFonts.poppins().copyWith(fontSize: 24),
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
-      ),
       body: Container(
         padding: const EdgeInsets.only(left: 10),
         child: SingleChildScrollView(
@@ -96,6 +41,71 @@ class _Home_State extends State<Home_> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              Column(
+                children: [
+                  Container(
+                    margin: EdgeInsets.only(bottom: 20, top: 10, left: 12),
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      "Explore",
+                      style: GoogleFonts.poppins().copyWith(
+                        fontSize: 35,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black,
+                      ),
+                    ),
+                  ),
+                  Container(
+                    margin: EdgeInsets.all(10),
+                    child: Row(
+                      children: [
+                        Expanded(
+                          flex: 1,
+                          child: Container(
+                            alignment: Alignment.center,
+                            child: Text(
+                              "Latest",
+                              style: GoogleFonts.poppins().copyWith(
+                                color: Colors.green,
+                                fontSize: 20,
+                                letterSpacing: -1,
+                              ),
+                            ),
+                          ),
+                        ),
+                        Expanded(
+                          flex: 1,
+                          child: Container(
+                            alignment: Alignment.center,
+                            child: Text(
+                              "Diwali",
+                              style: GoogleFonts.poppins().copyWith(
+                                color: Colors.green,
+                                fontSize: 20,
+                                letterSpacing: -1,
+                              ),
+                            ),
+                          ),
+                        ),
+                        Expanded(
+                          flex: 1,
+                          child: Container(
+                            alignment: Alignment.center,
+                            child: Text(
+                              "Images",
+                              style: GoogleFonts.poppins().copyWith(
+                                color: Colors.green,
+                                fontSize: 20,
+                                letterSpacing: -1,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
               ...Global.Data.map(
                 (e) {
                   List q = e['data'];
@@ -103,21 +113,14 @@ class _Home_State extends State<Home_> {
                   return Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      TextButton(
-                        onPressed: () {},
-                        child: Text(
-                          "${e['Category']}",
-                          style: const TextStyle(
-                              fontSize: 23, color: Colors.black),
-                        ),
-                      ),
                       SingleChildScrollView(
                         physics: const BouncingScrollPhysics(),
                         scrollDirection: Axis.horizontal,
-                        child: Row(
+                        child: Column(
                           children: [
                             ...q.map(
-                              (e) => GestureDetector(
+                              (e) =>
+                  (TabIndex == e['title']) ? GestureDetector(
                                 onTap: () {
                                   Navigator.pushNamed(
                                     context,
@@ -126,6 +129,7 @@ class _Home_State extends State<Home_> {
                                   );
                                 },
                                 child: Card(
+                                  surfaceTintColor: Colors.greenAccent,
                                   child: Container(
                                     alignment: Alignment.center,
                                     padding: const EdgeInsets.symmetric(

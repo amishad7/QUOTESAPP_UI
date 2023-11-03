@@ -12,8 +12,8 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
-    Timer(const Duration(seconds: 4), () {
-      Navigator.pushNamed(context, "one");
+    Timer(const Duration(seconds: 2), () {
+      Navigator.pushReplacementNamed(context, "one");
     });
 
     return Scaffold(
@@ -23,7 +23,7 @@ class _SplashScreenState extends State<SplashScreen> {
           decoration: const BoxDecoration(
             image: DecorationImage(
               image: NetworkImage(
-                  'https://i.pinimg.com/originals/7d/de/4a/7dde4abc28d869acae0d349319fdd7a9.gif'),
+                  'https://i.pinimg.com/originals/9f/c2/12/9fc2126eec2c0a3876e3f2097af9b983.gif'),
             ),
           ),
         ),

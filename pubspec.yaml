@@ -37,8 +37,7 @@ dependencies:
   cupertino_icons:
   google_fonts:
   path_provider:
-  share_plus:
-
+  share_extend:
 
 dev_dependencies:
   flutter_test:

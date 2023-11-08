@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:word/utils/Globals.dart';
@@ -18,6 +16,7 @@ class _Home_State extends State<Home_> {
 
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.white,
         centerTitle: true,
         actions: [
           IconButton(
@@ -25,13 +24,6 @@ class _Home_State extends State<Home_> {
             icon: Icon(Icons.person_outline_rounded),
           ),
         ],
-      ),
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.green.shade50,
-        onPressed: () {
-          Navigator.pushNamed(context, 'three');
-        },
-        child: Icon(Icons.add),
       ),
       backgroundColor: Colors.white,
       body: Container(
@@ -55,55 +47,6 @@ class _Home_State extends State<Home_> {
                       ),
                     ),
                   ),
-                  Container(
-                    margin: EdgeInsets.all(10),
-                    child: Row(
-                      children: [
-                        Expanded(
-                          flex: 1,
-                          child: Container(
-                            alignment: Alignment.center,
-                            child: Text(
-                              "Latest",
-                              style: GoogleFonts.poppins().copyWith(
-                                color: Colors.green,
-                                fontSize: 20,
-                                letterSpacing: -1,
-                              ),
-                            ),
-                          ),
-                        ),
-                        Expanded(
-                          flex: 1,
-                          child: Container(
-                            alignment: Alignment.center,
-                            child: Text(
-                              "Diwali",
-                              style: GoogleFonts.poppins().copyWith(
-                                color: Colors.green,
-                                fontSize: 20,
-                                letterSpacing: -1,
-                              ),
-                            ),
-                          ),
-                        ),
-                        Expanded(
-                          flex: 1,
-                          child: Container(
-                            alignment: Alignment.center,
-                            child: Text(
-                              "Images",
-                              style: GoogleFonts.poppins().copyWith(
-                                color: Colors.green,
-                                fontSize: 20,
-                                letterSpacing: -1,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
                 ],
               ),
               ...Global.Data.map(
@@ -119,8 +62,7 @@ class _Home_State extends State<Home_> {
                         child: Column(
                           children: [
                             ...q.map(
-                              (e) =>
-                  (TabIndex == e['title']) ? GestureDetector(
+                              (e) => GestureDetector(
                                 onTap: () {
                                   Navigator.pushNamed(
                                     context,
@@ -172,10 +114,24 @@ class _Home_State extends State<Home_> {
                                         ),
                                         Align(
                                           alignment: Alignment.center,
-                                          child: Text(
-                                            "${e['quote']}",
-                                            style: GoogleFonts.poppins()
-                                                .copyWith(fontSize: 18),
+                                          child: Column(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
+                                              Text(
+                                                "${e['quote']}",
+                                                style: GoogleFonts.poppins()
+                                                    .copyWith(fontSize: 18),
+                                              ),
+                                              Text(
+                                                "- ${e['author']}",
+                                                style: GoogleFonts.poppins()
+                                                    .copyWith(
+                                                  fontSize: 18,
+                                                  fontWeight: FontWeight.bold,
+                                                ),
+                                              ),
+                                            ],
                                           ),
                                         ),
                                       ],

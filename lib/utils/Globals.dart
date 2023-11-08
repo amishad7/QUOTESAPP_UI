@@ -3,11 +3,23 @@ import 'package:flutter/material.dart';
 class Global {
   static List img = [
     "https://images.rawpixel.com/image_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIyLTA1L3JtMjE4YmF0Y2g5LW15bnQtNjMuanBn.jpg",
+    "https://images.unsplash.com/photo-1472149110793-7aa262859995?auto=format&fit=crop&q=80&w=1000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxjb2xsZWN0aW9uLXBhZ2V8MTd8NDczMjU3NHx8ZW58MHx8fHx8",
+    "https://st2.depositphotos.com/1757635/7119/i/450/depositphotos_71195665-stock-photo-small-girl-with-umbrella.jpg",
+    "https://images.unsplash.com/photo-1487088678257-3a541e6e3922?auto=format&fit=crop&q=80&w=1000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxjb2xsZWN0aW9uLXBhZ2V8MXwxOTc3MzAyfHxlbnwwfHx8fHw%3D",
+    "https://images.ctfassets.net/co0pvta7hzrh/4lcGJoOQYFmvX9ALF9rOrE/1ee331aac5e8e2ed744dbab072e72651/Request_For_Quote__RFQ__Form_Template_thumb.png",
   ];
-  static List Eimg = [
-    "https://i.pinimg.com/originals/2b/d1/8e/2bd18e0b2c2b66f8821c716c2febbd2d.jpg",
+  static List fonts = [
+    "Roboto",
+    "Open Sans",
+    "Oswald",
+    "Kanit",
+    "Lora",
+    "Lobster",
+    "Pacifico",
+    "Cinzel",
+    "Anton",
   ];
-
+  static String font = "Poppins";
   static Color imgbackground = Colors.black;
   static Color fontcolor = Colors.white;
   static String defaultimg =
@@ -17,7 +29,7 @@ class Global {
       "Category": "Festival",
       "data": [
         {
-          'title': 'Diwali Festival',
+          'title': 'Festival',
           'favourite': false,
           'id': 2,
           'quote':
@@ -25,7 +37,7 @@ class Global {
           'author': 'Anonymous',
         },
         {
-          'title': 'Diwali Celebration',
+          'title': 'Festival',
           'favourite': false,
           'id': 3,
           'quote':
@@ -33,7 +45,7 @@ class Global {
           'author': 'Celebration Wishes',
         },
         {
-          'title': 'Festival of Diyas',
+          'title': 'Festival',
           'id': 4,
           'favourite': false,
           'quote':
@@ -41,7 +53,7 @@ class Global {
           'author': 'Diyas Galore',
         },
         {
-          'title': 'Diwali Delights',
+          'title': 'Festival',
           'id': 5,
           'favourite': false,
           'quote':
@@ -49,23 +61,23 @@ class Global {
           'author': 'Sweets Galore',
         },
         {
-          'title': 'Diwali Wishes',
+          'title': 'Festival',
           'favourite': false,
           'id': 6,
           'quote':
               "Wishing you a Diwali that shines as bright as a thousand firecrackers.",
-          'author': 'Well-Wisher',
+          'author': 'rina kent',
         },
         {
-          'title': 'Festival of Rangoli',
+          'title': 'Festival',
           'favourite': false,
           'id': 7,
           'quote':
               "May your life be as colorful and vibrant as a Diwali Rangoli.",
-          'author': 'Rangoli Artist',
+          'author': 'Maya Rangoli',
         },
         {
-          'title': 'Light Up Diwali',
+          'title': 'Festival',
           'favourite': false,
           'id': 8,
           'quote':
@@ -73,46 +85,46 @@ class Global {
           'author': 'Light Seeker',
         },
         {
+          'title': 'Festival',
           'favourite': false,
-          'title': 'Diwali Blessings',
           'id': 9,
           'quote':
               "May the divine blessings of Diwali bring peace and prosperity to your life.",
           'author': 'Blessings Giver',
         },
         {
+          'title': 'Festival',
           'favourite': false,
-          'title': 'Diwali Greetings',
           'id': 10,
           'quote': "Wishing you a Diwali filled with joy, laughter, and love.",
           'author': 'Warm Wishes',
         },
         {
+          'title': 'Festival',
           'favourite': false,
-          'title': 'Festival of Family',
           'id': 11,
           'quote':
               "Celebrate Diwali with your loved ones and create cherished memories.",
           'author': 'Family Ties',
         },
         {
+          'title': 'Festival',
           'favourite': false,
-          'title': 'Diwali Lights',
           'id': 12,
           'quote':
               "May the light of Diwali shine upon you, bringing happiness and success.",
           'author': 'Light Bearer',
         },
         {
+          'title': 'Festival',
           'favourite': false,
-          'title': 'Diwali Traditions',
           'id': 13,
           'quote':
               "Embrace the beautiful traditions of Diwali and make it a memorable one.",
           'author': 'Tradition Keeper',
         },
         {
-          'title': 'Festival of Prosperity',
+          'title': 'Festival',
           'id': 14,
           'favourite': false,
           'quote':
@@ -120,60 +132,12 @@ class Global {
           'author': 'Prosperity Seeker',
         },
         {
-          'title': 'Diwali Sparkles',
+          'title': 'Festival',
           'id': 15,
           'favourite': false,
           'quote':
               "May your Diwali be as sparkling as a sky full of fireworks. Happy Diwali!",
           'author': 'Firework Enthusiast',
-        },
-        {
-          'favourite': false,
-          'title': 'Diwali Magic',
-          'id': 16,
-          'quote':
-              "Experience the magic of Diwali and let it fill your heart with joy.",
-          'author': 'Magic Lover',
-        },
-        {
-          'favourite': false,
-          'title': 'Festival of Unity',
-          'id': 17,
-          'quote':
-              "Diwali brings people together in love and harmony. Happy Diwali!",
-          'author': 'Unity Advocate',
-        },
-        {
-          'title': 'Diwali Blessings',
-          'favourite': false,
-          'id': 18,
-          'quote':
-              "May the blessings of Diwali guide you towards a bright and prosperous future.",
-          'author': 'Blessings Bringer',
-        },
-        {
-          'title': 'Diwali Radiance',
-          'favourite': false,
-          'id': 19,
-          'quote':
-              "Let your life radiate with the joy and warmth of Diwali. Happy Diwali!",
-          'author': 'Radiance Seeker',
-        },
-        {
-          'title': 'Festival of Lamps',
-          'id': 20,
-          'favourite': false,
-          'quote':
-              "May the lamps of Diwali light up your path to success and happiness.",
-          'author': 'Lamp Enthusiast',
-        },
-        {
-          'title': 'Diwali Love and Light',
-          'id': 21,
-          'favourite': false,
-          'quote':
-              "Sending you love and light on this auspicious occasion of Diwali. Enjoy!",
-          'author': 'Love and Light Wishes',
         },
       ],
     },
@@ -197,14 +161,14 @@ class Global {
         {
           'title': 'Latest',
           'id': 4,
-          'favourite': true,
+          'favourite': false,
           'quote': "Stay updated with the latest news and developments.",
           'author': 'News Reporter',
         },
         {
           'title': 'Latest',
           'id': 5,
-          'favourite': true,
+          'favourite': false,
           'quote': "The latest technology is changing the world. Stay ahead!",
           'author': 'Tech Enthusiast',
         },
@@ -218,7 +182,7 @@ class Global {
         {
           'title': 'Latest',
           'id': 7,
-          'favourite': true,
+          'favourite': false,
           'quote': "Explore the world with the latest travel destinations.",
           'author': 'Travel Explorer',
         },
@@ -232,14 +196,14 @@ class Global {
         {
           'title': 'Latest',
           'id': 9,
-          'favourite': true,
+          'favourite': false,
           'quote': "Find inspiration in the latest works of art.",
           'author': 'Art Enthusiast',
         },
         {
           'title': 'Latest',
           'id': 10,
-          'favourite': true,
+          'favourite': false,
           'quote': "Taste the latest culinary delights from around the world.",
           'author': 'Food Critic',
         },
@@ -253,7 +217,7 @@ class Global {
         {
           'title': 'Latest',
           'id': 12,
-          'favourite': true,
+          'favourite': false,
           'quote': "Capture life's latest adventures with your camera.",
           'author': 'Photographer',
         },
@@ -267,14 +231,14 @@ class Global {
         {
           'title': 'Latest',
           'id': 14,
-          'favourite': true,
+          'favourite': false,
           'quote': "Stay connected with the latest social media updates.",
           'author': 'Social Influencer',
         },
         {
           'title': 'Latest',
           'id': 15,
-          'favourite': true,
+          'favourite': false,
           'quote': "Latest scientific discoveries expand our horizons.",
           'author': 'Scientist',
         },
@@ -288,7 +252,7 @@ class Global {
         {
           'title': 'Latest',
           'id': 17,
-          'favourite': true,
+          'favourite': false,
           'quote': "Innovate and create with the latest technology tools.",
           'author': 'Innovator',
         },
@@ -302,7 +266,7 @@ class Global {
         {
           'title': 'Latest',
           'id': 19,
-          'favourite': true,
+          'favourite': false,
           'quote': "Enjoy the latest video games for ultimate entertainment.",
           'author': 'Gamer',
         },

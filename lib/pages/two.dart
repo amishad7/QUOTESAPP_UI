@@ -7,7 +7,7 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:path_provider/path_provider.dart';
-import 'package:share_plus/share_plus.dart';
+import 'package:share_extend/share_extend.dart';
 import 'package:word/utils/Globals.dart';
 
 class info_Page extends StatefulWidget {
@@ -18,23 +18,27 @@ class info_Page extends StatefulWidget {
 }
 
 class _info_PageState extends State<info_Page> {
-  GlobalKey repaintBoudrykey = GlobalKey();
+  GlobalKey repaintBoundry = GlobalKey();
 
-  ShareImage() async {
-    var repaintObjet = repaintBoudrykey.currentContext!.findRenderObject()
-        as RenderRepaintBoundary;
+  void shareImage() async {
+    RenderRepaintBoundary renderRepaintBoundary = repaintBoundry.currentContext!
+        .findRenderObject() as RenderRepaintBoundary;
 
-    var imgData = await repaintObjet.toImage(pixelRatio: 3);
+    var image = await renderRepaintBoundary.toImage(pixelRatio: 5);
 
-    var imgBytedata = await imgData.toByteData(format: ImageByteFormat.png);
+    ByteData? byteData = await image.toByteData(format: ImageByteFormat.png);
 
-    Uint8List myimgU8intList = imgBytedata!.buffer.asUint8List();
+    Uint8List fetchImage = byteData!.buffer.asUint8List();
 
-    Directory? directory = await getDownloadsDirectory();
+    Directory directory = await getApplicationCacheDirectory();
 
-    File file = File('${directory!.path}.png');
+    String path = directory.path;
 
-    Share.shareXFiles([XFile(file.path)]);
+    File file = File('$path.png');
+
+    file.writeAsBytes(fetchImage);
+
+    ShareExtend.share(file.path, "Image");
   }
 
   copyText({required String Textdata}) {
@@ -74,7 +78,7 @@ class _info_PageState extends State<info_Page> {
               ),
               PopupMenuItem(
                 onTap: () {
-                  ShareImage();
+                  shareImage();
                   log("image share done");
                 },
                 child: const Text("Share"),
@@ -89,7 +93,7 @@ class _info_PageState extends State<info_Page> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             RepaintBoundary(
-              key: repaintBoudrykey,
+              key: repaintBoundry,
               child: Container(
                 alignment: Alignment.center,
                 padding: const EdgeInsets.all(23),
@@ -220,58 +224,115 @@ class _info_PageState extends State<info_Page> {
                 ),
               ),
             ),
-            // Container(
-            //   margin: const EdgeInsets.symmetric(vertical: 15, horizontal: 15),
-            //   child: Text(
-            //     "Background Image",
-            //     style: GoogleFonts.inter().copyWith(
-            //       fontSize: 30,
-            //       letterSpacing: -2,
-            //       color: Colors.black.withOpacity(0.7),
-            //       fontWeight: FontWeight.bold,
-            //     ),
-            //   ),
-            // ),
-            // SizedBox(
-            //   height: MediaQuery.of(context).size.height / 6.9,
-            //   child: SingleChildScrollView(
-            //     physics: const BouncingScrollPhysics(),
-            //     scrollDirection: Axis.horizontal,
-            //     child: Row(
-            //       children: [
-            //         ...Global.img.map((e) {
-            //           return GestureDetector(
-            //             onTap: () {
-            //               setState(() {
-            //                 Global.defaultimg = e;
-            //               });
-            //             },
-            //             child: Container(
-            //               margin: const EdgeInsets.symmetric(horizontal: 10),
-            //               height: MediaQuery.of(context).size.height / 7.6,
-            //               width: MediaQuery.of(context).size.width / 4.1,
-            //               decoration: BoxDecoration(
-            //                 borderRadius: BorderRadius.circular(24),
-            //                 image: DecorationImage(
-            //                     image: AssetImage(
-            //                       e,
-            //                     ),
-            //                     fit: BoxFit.cover),
-            //                 boxShadow: [
-            //                   BoxShadow(
-            //                     color: Colors.black.withOpacity(0.25),
-            //                     offset: const Offset(4, 5),
-            //                     blurRadius: 2,
-            //                   ),
-            //                 ],
-            //               ),
-            //             ),
-            //           );
-            //         }),
-            //       ],
-            //     ),
-            //   ),
-            // ),
+            Container(
+              margin: const EdgeInsets.symmetric(vertical: 15, horizontal: 15),
+              child: Text(
+                "Background Image",
+                style: GoogleFonts.inter().copyWith(
+                  fontSize: 30,
+                  letterSpacing: -2,
+                  color: Colors.black.withOpacity(0.7),
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+            SizedBox(
+              height: MediaQuery.of(context).size.height / 6.9,
+              child: SingleChildScrollView(
+                physics: const BouncingScrollPhysics(),
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  children: [
+                    ...Global.img.map((e) {
+                      return GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            Global.defaultimg = e;
+                          });
+                        },
+                        child: Container(
+                          margin: const EdgeInsets.symmetric(horizontal: 10),
+                          height: MediaQuery.of(context).size.height / 7.6,
+                          width: MediaQuery.of(context).size.width / 4.1,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(24),
+                            image: DecorationImage(
+                              image: NetworkImage(
+                                e,
+                              ),
+                              fit: BoxFit.cover,
+                            ),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.black.withOpacity(0.25),
+                                offset: const Offset(4, 5),
+                                blurRadius: 2,
+                              ),
+                            ],
+                          ),
+                        ),
+                      );
+                    }),
+                  ],
+                ),
+              ),
+            ),
+            Container(
+              margin: const EdgeInsets.symmetric(vertical: 15, horizontal: 15),
+              child: Text(
+                "Font style",
+                style: GoogleFonts.inter().copyWith(
+                  fontSize: 30,
+                  letterSpacing: -2,
+                  color: Colors.black.withOpacity(0.7),
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+            SizedBox(
+              height: MediaQuery.of(context).size.height / 7.9,
+              child: SingleChildScrollView(
+                physics: const BouncingScrollPhysics(),
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  children: [
+                    ...Global.fonts.map((e) {
+                      return GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            Global.font = e;
+                          });
+                        },
+                        child: Container(
+                          margin: const EdgeInsets.symmetric(
+                            horizontal: 10,
+                            vertical: 10,
+                          ),
+                          alignment: Alignment.center,
+                          height: MediaQuery.of(context).size.height / 6.6,
+                          width: MediaQuery.of(context).size.width / 4.1,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(24),
+                            color: Colors.white,
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.black.withOpacity(0.25),
+                                offset: const Offset(4, 5),
+                                blurRadius: 2,
+                              ),
+                            ],
+                          ),
+                          child: Text(
+                            'A a',
+                            style: GoogleFonts.getFont("${Global.font}"),
+                          ),
+                        ),
+                      );
+                    }),
+                  ],
+                ),
+              ),
+            ),
           ],
         ),
       ),
